@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Простой сайт</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #4CAF50;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    main {
+      padding: 1rem;
+      margin-bottom: 60px; /* отступ для футера */
+    }
+    #widget {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать на мой сайт</h1>
+  </header>
+  <main>
+    <p>Это пример простого HTML сайта для тестирования виджета.</p>
+    <div id="widget">
+      <p>Здесь будет размещён ваш виджет</p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Простой сайт</p>
+  </footer>
+</body>
+</html>
