@@ -1,85 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Widgets Test</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-    header, footer {
-      background-color: #4CAF50;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-    }
-    main {
-      padding: 1rem;
-      margin-bottom: 60px; /* Отступ для футера */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простой сайт с двумя чат-виджетами</title>
+    <style>
+        /* Стили для кнопок чат-виджетов */
+        .chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
 
-    /* Стили для кнопок виджетов */
-    .widget-button {
-      position: fixed;
-      bottom: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
+        /* Первый виджет */
+        #widget1-button {
+            position: absolute;
+            bottom: 60px; /* Расположение выше второго виджета */
+            right: 0;
+        }
 
-    /* Кнопка первого виджета */
-    #threads-widget-button {
-      right: 100px; /* Сдвинуть кнопку влево */
-      background-color: #4CAF50;
-    }
-
-    /* Кнопка второго виджета */
-    #jaicp-widget-button {
-      right: 20px; /* Оставить кнопку справа */
-      background-color: #007bff;
-    }
-  </style>
+        /* Второй виджет */
+        #widget2-button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Widget test</h1>
-  </header>
-  <main>
-    <div id="widget">
-      <!-- Первый виджет -->
-      <script type="text/javascript">
-        !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
-      </script>
+    <h1>Добро пожаловать на наш сайт!</h1>
+    <p>Здесь вы можете использовать два разных чат-виджета.</p>
+
+    <!-- Контейнер для чат-виджетов -->
+    <div class="chat-widget-container">
+        <!-- Первый чат-виджет -->
+        <div id="widget1-button">
+            <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
+        </div>
+
+        <!-- Второй чат-виджет -->
+        <div id="widget2-button">
+            <script type="text/javascript">
+                !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
+            </script>
+        </div>
     </div>
-  </main>
-  <footer>
-    <p>&copy; 2025 Простой сайт</p>
-  </footer>
-
-  <!-- Второй виджет -->
-  <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
-
-  <!-- JavaScript для переопределения стилей кнопок -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Находим кнопку первого виджета
-      const threadsWidgetButton = document.querySelector('.threads-widget-button-class'); // Замените на реальный класс
-      if (threadsWidgetButton) {
-        threadsWidgetButton.id = 'threads-widget-button';
-      }
-
-      // Находим кнопку второго виджета
-      const jaicpWidgetButton = document.querySelector('.jaicp-chat-widget-button-class'); // Замените на реальный класс
-      if (jaicpWidgetButton) {
-        jaicpWidgetButton.id = 'jaicp-widget-button';
-      }
-    });
-  </script>
 </body>
 </html>
