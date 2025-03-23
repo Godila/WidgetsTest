@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Простой сайт с двумя чат-виджетами</title>
     <style>
-        /* Стили для кнопок чат-виджетов */
+        /* Общий контейнер для виджетов */
         .chat-widget-container {
             position: fixed;
             bottom: 20px;
@@ -14,14 +14,14 @@
         }
 
         /* Первый виджет */
-        #widget1-button .justwidget-button { /* Используйте конкретный селектор */
-            position: absolute;
-            bottom: 60px; /* Расположение выше второго виджета */
-            right: 0;
+        .justwidget {
+            position: absolute !important;
+            bottom: 80px !important; /* Расположение выше второго виджета */
+            right: 0 !important;
         }
 
         /* Второй виджет */
-        #widget2-button .threads-widget-button { /* Используйте конкретный селектор */
+        #widget2-button {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -35,7 +35,15 @@
     <!-- Контейнер для чат-виджетов -->
     <div class="chat-widget-container">
         <!-- Первый чат-виджет -->
-        <div id="widget1-button">
+        <div class="justwidget mobile_right bottom justwidget_hidden" data-test-id="Justwidget">
+            <div class="justwidget--asst justwidget--toggle-action">
+                <div class="justwidget--asst-pic-waves"></div>
+                <div class="justwidget--asst-pic">
+                    <svg class="justwidget--asst-pic_svg-desktop" viewBox="0 0 120 120">
+                        <!-- SVG содержимое -->
+                    </svg>
+                </div>
+            </div>
             <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
         </div>
 
