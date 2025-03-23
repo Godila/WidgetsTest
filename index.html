@@ -1,132 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт с двумя страницами и виджетами</title>
-    <style>
-        /* Общий стиль */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Слайдер с виджетами</title>
+  <style>
+    /* Стили для слайдера */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
 
-        h1, p {
-            text-align: center;
-        }
+    .slider-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      height: 400px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+    }
 
-        /* Стиль для слайдера */
-        .slider-container {
-            display: flex;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            height: 100vh;
-        }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: left 0.5s ease-in-out;
+    }
 
-        .page {
-            min-width: 100%;
-            transition: transform 0.5s ease-in-out;
-            position: relative;
-        }
+    .slide.active {
+      left: 0;
+    }
 
-        /* Стиль для кнопок навигации */
-        .nav-buttons {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
-        }
+    .controls {
+      margin-top: 20px;
+    }
 
-        .nav-buttons button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    .controls button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-        .nav-buttons button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Стиль для виджетов */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        /* Скрыть виджеты по умолчанию */
-        .chat-widget.hidden {
-            display: none;
-        }
-    </style>
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <!-- Контейнер для слайдера -->
-    <div class="slider-container" id="slider">
-        <!-- Первая страница -->
-        <div class="page" id="page1">
-            <h1>Страница 1</h1>
-            <p>Здесь размещен первый чат-виджет.</p>
-
-            <!-- Первый виджет -->
-            <div class="chat-widget" id="widget1">
-                <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
-            </div>
-        </div>
-
-        <!-- Вторая страница -->
-        <div class="page" id="page2">
-            <h1>Страница 2</h1>
-            <p>Здесь размещен второй чат-виджет.</p>
-
-            <!-- Второй виджет -->
-            <div class="chat-widget hidden" id="widget2">
-                <script type="text/javascript">
-                    !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
-                </script>
-            </div>
-        </div>
+  <h1>Слайдер с виджетами</h1>
+  <div class="slider-container">
+    <!-- Первый слайд -->
+    <div class="slide active" id="slide1">
+      <!-- Виджет 1 -->
+      <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
     </div>
 
-    <!-- Кнопки навигации -->
-    <div class="nav-buttons">
-        <button onclick="changePage(0)">Страница 1</button>
-        <button onclick="changePage(1)">Страница 2</button>
+    <!-- Второй слайд -->
+    <div class="slide" id="slide2">
+      <!-- Виджет 2 -->
+      <script type="text/javascript">
+        !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
+      </script>
     </div>
+  </div>
 
-    <!-- JavaScript для управления слайдером и виджетами -->
-    <script>
-        const slider = document.getElementById('slider');
-        let currentPage = 0;
+  <!-- Кнопки управления слайдером -->
+  <div class="controls">
+    <button onclick="changeSlide(0)">Показать виджет 1</button>
+    <button onclick="changeSlide(1)">Показать виджет 2</button>
+  </div>
 
-        // Функция для переключения страниц
-        function changePage(pageIndex) {
-            currentPage = pageIndex;
-            const offset = -pageIndex * 100; // Сдвиг в процентах
-            slider.style.transform = `translateX(${offset}%)`;
+  <script>
+    // JavaScript для управления слайдером
+    const slides = document.querySelectorAll('.slide');
 
-            // Управление видимостью виджетов
-            const widget1 = document.getElementById('widget1');
-            const widget2 = document.getElementById('widget2');
-
-            if (pageIndex === 0) {
-                widget1.classList.remove('hidden');
-                widget2.classList.add('hidden');
-            } else {
-                widget1.classList.add('hidden');
-                widget2.classList.remove('hidden');
-            }
+    function changeSlide(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+          slide.style.left = '0';
+        } else {
+          slide.classList.remove('active');
+          slide.style.left = '100%';
         }
-    </script>
+      });
+    }
+  </script>
 </body>
 </html>
