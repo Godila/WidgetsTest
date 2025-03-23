@@ -11,13 +11,20 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
+            display: flex; /* Используем Flexbox */
+            flex-direction: column-reverse; /* Устанавливаем вертикальное направление */
+            align-items: flex-end; /* Выравнивание по правому краю */
+        }
+
+        /* Первый виджет */
+        #widget1-button {
+            position: relative; /* Относительное позиционирование */
+            margin-bottom: 20px; /* Отступ между кнопками */
         }
 
         /* Второй виджет */
         #widget2-button {
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            position: relative; /* Относительное позиционирование */
         }
     </style>
 </head>
@@ -47,9 +54,9 @@
             const widget1 = document.querySelector('.justwidget');
             if (widget1) {
                 // Установка стилей через style.setProperty для добавления !important
-                widget1.style.setProperty('position', 'absolute', 'important');
-                widget1.style.setProperty('bottom', '80px', 'important'); // Расположение выше второго виджета
-                widget1.style.setProperty('right', '25px', 'important'); // Отступ от правого края
+                widget1.style.setProperty('position', 'relative', 'important'); // Изменяем на относительное позиционирование
+                widget1.style.setProperty('bottom', 'auto', 'important'); // Убираем фиксированное положение
+                widget1.style.setProperty('right', 'auto', 'important'); // Убираем фиксированное положение
                 console.log('Первый виджет успешно позиционирован.');
             } else {
                 console.log('Виджет 1 еще не загружен. Повторная попытка...');
