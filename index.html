@@ -69,19 +69,6 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const widgetContainer = document.getElementById("widget-container");
-      const secondWidget = document.querySelector('.jaicp-chat-widget'); // Найдите класс второго виджета
+      const secondWidgetPlaceholder = document.getElementById("widget-2");
 
-      if (secondWidget && widgetContainer) {
-        // Переместите второй виджет в контейнер
-        widgetContainer.appendChild(secondWidget);
-
-        // Убедитесь, что второй виджет соответствует стилю
-        secondWidget.style.width = '300px';
-        secondWidget.style.height = '400px';
-        secondWidget.style.borderRadius = '8px';
-        secondWidget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-      }
-    });
-  </script>
-</body>
-</html>
+      // Функция для поиска второго виджета
