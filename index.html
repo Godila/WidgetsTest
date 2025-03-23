@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Простой сайт с двумя чат-виджетами</title>
     <style>
-        /* Общий контейнер для виджетов */
+        /* Стили для кнопок чат-виджетов */
         .chat-widget-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            display: flex; /* Используем Flexbox */
-            flex-direction: column-reverse; /* Устанавливаем вертикальное направление */
-            align-items: flex-end; /* Выравнивание по правому краю */
         }
 
         /* Первый виджет */
-        #widget1-button .justwidget {
-            position: relative !important; /* Относительное позиционирование */
-            margin-bottom: 20px !important; /* Отступ между кнопками */
+        #widget1-button {
+            position: absolute;
+            bottom: 60px; /* Расположение выше второго виджета */
+            right: 0;
         }
 
         /* Второй виджет */
         #widget2-button {
-            position: relative !important; /* Относительное позиционирование */
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
     </style>
 </head>
@@ -46,11 +46,5 @@
             </script>
         </div>
     </div>
-
-    <!-- JavaScript для переопределения позиции кнопки первого виджета -->
-    <script>
-        // Функция для изменения позиции кнопки первого виджета
-        function adjustWidget1Position() {
-            const widget1 = document.querySelector('.justwidget');
-            if (widget1) {
-                // У
+</body>
+</html>
