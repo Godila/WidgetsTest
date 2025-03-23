@@ -14,10 +14,10 @@
         }
 
         /* Первый виджет */
-        .justwidget {
-            position: absolute !important;
-            bottom: 80px !important; /* Расположение выше второго виджета */
-            right: 0 !important;
+        #widget1-button {
+            position: absolute;
+            bottom: 80px; /* Расположение выше второго виджета */
+            right: 0;
         }
 
         /* Второй виджет */
@@ -35,15 +35,7 @@
     <!-- Контейнер для чат-виджетов -->
     <div class="chat-widget-container">
         <!-- Первый чат-виджет -->
-        <div class="justwidget mobile_right bottom justwidget_hidden" data-test-id="Justwidget">
-            <div class="justwidget--asst justwidget--toggle-action">
-                <div class="justwidget--asst-pic-waves"></div>
-                <div class="justwidget--asst-pic">
-                    <svg class="justwidget--asst-pic_svg-desktop" viewBox="0 0 120 120">
-                        <!-- SVG содержимое -->
-                    </svg>
-                </div>
-            </div>
+        <div id="widget1-button">
             <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
         </div>
 
@@ -54,5 +46,26 @@
             </script>
         </div>
     </div>
+
+    <!-- JavaScript для переопределения позиции кнопки первого виджета -->
+    <script>
+        // Функция для изменения позиции кнопки первого виджета
+        function adjustWidget1Position() {
+            const widget1 = document.querySelector('.justwidget');
+            if (widget1) {
+                widget1.style.position = 'absolute';
+                widget1.style.bottom = '80px'; // Расположение выше второго виджета
+                widget1.style.right = '25px'; // Отступ от правого края
+            } else {
+                console.log('Виджет 1 еще не загружен. Повторная попытка...');
+                setTimeout(adjustWidget1Position, 500); // Повторяем проверку через 500 мс
+            }
+        }
+
+        // Запускаем функцию после загрузки страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            adjustWidget1Position();
+        });
+    </script>
 </body>
 </html>
