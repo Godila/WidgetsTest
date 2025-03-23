@@ -29,22 +29,6 @@
       background-color: #fff;
     }
 
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: left 0.5s ease-in-out;
-    }
-
-    .slide.active {
-      left: 0;
-    }
-
     .controls {
       margin-top: 20px;
     }
@@ -67,42 +51,37 @@
 </head>
 <body>
   <h1>Слайдер с виджетами</h1>
-  <div class="slider-container">
-    <!-- Первый слайд -->
-    <div class="slide active" id="slide1">
-      <!-- Виджет 1 -->
-      <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
-    </div>
-
-    <!-- Второй слайд -->
-    <div class="slide" id="slide2">
-      <!-- Виджет 2 -->
-      <script type="text/javascript">
-        !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
-      </script>
-    </div>
+  <div class="slider-container" id="widgetContainer">
+    <!-- Здесь будут динамически добавляться виджеты -->
   </div>
 
   <!-- Кнопки управления слайдером -->
   <div class="controls">
-    <button onclick="changeSlide(0)">Показать виджет 1</button>
-    <button onclick="changeSlide(1)">Показать виджет 2</button>
+    <button onclick="showWidget(1)">Показать виджет 1</button>
+    <button onclick="showWidget(2)">Показать виджет 2</button>
   </div>
 
   <script>
-    // JavaScript для управления слайдером
-    const slides = document.querySelectorAll('.slide');
+    // Функция для показа конкретного виджета
+    function showWidget(widgetId) {
+      const widgetContainer = document.getElementById('widgetContainer');
+      widgetContainer.innerHTML = ''; // Очищаем контейнер
 
-    function changeSlide(index) {
-      slides.forEach((slide, i) => {
-        if (i === index) {
-          slide.classList.add('active');
-          slide.style.left = '0';
-        } else {
-          slide.classList.remove('active');
-          slide.style.left = '100%';
-        }
-      });
+      if (widgetId === 1) {
+        // Добавляем виджет 1
+        const script1 = document.createElement('script');
+        script1.src = 'https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js';
+        script1.async = true;
+        widgetContainer.appendChild(script1);
+      } else if (widgetId === 2) {
+        // Добавляем виджет 2
+        const script2 = document.createElement('script');
+        script2.type = 'text/javascript';
+        script2.textContent = `
+          !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
+        `;
+        widgetContainer.appendChild(script2);
+      }
     }
   </script>
 </body>
