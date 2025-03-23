@@ -21,19 +21,28 @@
       padding: 1rem;
       margin-bottom: 60px; /* Отступ для футера */
     }
-    #widget-container {
+
+    /* Стили для кнопок виджетов */
+    .widget-button {
       position: fixed;
-      bottom: 20px; /* Отступ снизу */
-      right: 20px; /* Отступ справа */
-      display: flex;
-      gap: 10px; /* Расстояние между виджетами */
-      z-index: 1000; /* Позиция над другими элементами */
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
     }
-    .chat-widget {
-      width: 300px; /* Ширина каждого виджета */
-      height: 400px; /* Высота каждого виджета */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для виджетов */
-      border-radius: 8px; /* Скругление углов */
+
+    /* Кнопка первого виджета */
+    #threads-widget-button {
+      right: 100px; /* Сдвинуть кнопку влево */
+      background-color: #4CAF50;
+    }
+
+    /* Кнопка второго виджета */
+    #jaicp-widget-button {
+      right: 20px; /* Оставить кнопку справа */
+      background-color: #007bff;
     }
   </style>
 </head>
@@ -49,15 +58,6 @@
       </script>
     </div>
   </main>
-  <div id="widget-container">
-    <!-- Контейнер для виджетов -->
-    <div class="chat-widget" id="widget-1">
-      <!-- Первый виджет -->
-    </div>
-    <div class="chat-widget" id="widget-2">
-      <!-- Второй виджет -->
-    </div>
-  </div>
   <footer>
     <p>&copy; 2025 Простой сайт</p>
   </footer>
@@ -65,10 +65,21 @@
   <!-- Второй виджет -->
   <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
 
-  <!-- JavaScript для перемещения второго виджета -->
+  <!-- JavaScript для переопределения стилей кнопок -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const widgetContainer = document.getElementById("widget-container");
-      const secondWidgetPlaceholder = document.getElementById("widget-2");
+      // Находим кнопку первого виджета
+      const threadsWidgetButton = document.querySelector('.threads-widget-button-class'); // Замените на реальный класс
+      if (threadsWidgetButton) {
+        threadsWidgetButton.id = 'threads-widget-button';
+      }
 
-      // Функция для поиска второго виджета
+      // Находим кнопку второго виджета
+      const jaicpWidgetButton = document.querySelector('.jaicp-chat-widget-button-class'); // Замените на реальный класс
+      if (jaicpWidgetButton) {
+        jaicpWidgetButton.id = 'jaicp-widget-button';
+      }
+    });
+  </script>
+</body>
+</html>
