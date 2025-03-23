@@ -19,7 +19,7 @@
     }
     main {
       padding: 1rem;
-      margin-bottom: 60px; /* отступ для футера */
+      margin-bottom: 60px; /* Отступ для футера */
     }
     #widget-container {
       position: fixed;
@@ -43,11 +43,10 @@
   </header>
   <main>
     <div id="widget">
-      <!-- BEGIN CHAT {literal} -->
+      <!-- Первый виджет -->
       <script type="text/javascript">
         !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
       </script>
-      <!-- {/literal} END CHAT -->
     </div>
   </main>
   <div id="widget-container">
@@ -62,5 +61,27 @@
   <footer>
     <p>&copy; 2025 Простой сайт</p>
   </footer>
+
+  <!-- Второй виджет -->
+  <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
+
+  <!-- JavaScript для перемещения второго виджета -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const widgetContainer = document.getElementById("widget-container");
+      const secondWidget = document.querySelector('.jaicp-chat-widget'); // Найдите класс второго виджета
+
+      if (secondWidget && widgetContainer) {
+        // Переместите второй виджет в контейнер
+        widgetContainer.appendChild(secondWidget);
+
+        // Убедитесь, что второй виджет соответствует стилю
+        secondWidget.style.width = '300px';
+        secondWidget.style.height = '400px';
+        secondWidget.style.borderRadius = '8px';
+        secondWidget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+      }
+    });
+  </script>
 </body>
 </html>
