@@ -17,14 +17,14 @@
         }
 
         /* Первый виджет */
-        #widget1-button {
-            position: relative; /* Относительное позиционирование */
-            margin-bottom: 20px; /* Отступ между кнопками */
+        #widget1-button .justwidget {
+            position: relative !important; /* Относительное позиционирование */
+            margin-bottom: 20px !important; /* Отступ между кнопками */
         }
 
         /* Второй виджет */
         #widget2-button {
-            position: relative; /* Относительное позиционирование */
+            position: relative !important; /* Относительное позиционирование */
         }
     </style>
 </head>
@@ -53,24 +53,4 @@
         function adjustWidget1Position() {
             const widget1 = document.querySelector('.justwidget');
             if (widget1) {
-                // Установка стилей через style.setProperty для добавления !important
-                widget1.style.setProperty('position', 'relative', 'important'); // Изменяем на относительное позиционирование
-                widget1.style.setProperty('bottom', 'auto', 'important'); // Убираем фиксированное положение
-                widget1.style.setProperty('right', 'auto', 'important'); // Убираем фиксированное положение
-                console.log('Первый виджет успешно позиционирован.');
-            } else {
-                console.log('Виджет 1 еще не загружен. Повторная попытка...');
-                setTimeout(adjustWidget1Position, 500); // Повторяем проверку через 500 мс
-            }
-        }
-
-        // Запускаем функцию после загрузки страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            // Ждем 2 секунды, чтобы убедиться, что оба виджета загрузились
-            setTimeout(() => {
-                adjustWidget1Position();
-            }, 2000);
-        });
-    </script>
-</body>
-</html>
+                // У
