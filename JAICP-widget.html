@@ -5,9 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAICP</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .container { margin-top: 50px; }
-        button { padding: 10px 20px; cursor: pointer; }
+        /* Общий стиль */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6dd5ed, #21bf73); /* Градиентный фон */
+            color: white; /* Цвет текста */
+            min-height: 100vh; /* Минимальная высота страницы */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для заголовка */
+        }
+
+        /* Контейнер для виджета */
+        .container {
+            margin-top: 20px;
+        }
+
+        /* Стиль для кнопок */
+        button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+            border: none;
+            border-radius: 30px; /* Скругленные углы */
+            cursor: pointer;
+            transition: all 0.3s ease; /* Плавный переход эффектов */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для кнопок */
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.4); /* Более светлый фон при наведении */
+            transform: scale(1.05); /* Увеличение размера кнопки */
+        }
+
+        button:active {
+            transform: scale(0.95); /* Уменьшение размера при нажатии */
+        }
     </style>
 </head>
 <body>
