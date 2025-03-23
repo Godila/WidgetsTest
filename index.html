@@ -63,6 +63,11 @@
             right: 20px;
             z-index: 1000;
         }
+
+        /* Скрыть виджеты по умолчанию */
+        .chat-widget.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +79,7 @@
             <p>Здесь размещен первый чат-виджет.</p>
 
             <!-- Первый виджет -->
-            <div class="chat-widget">
+            <div class="chat-widget" id="widget1">
                 <script src="https://bot.jaicp.com/chatwidget/FrVITNbj:55d7c4866dac10a220c7923f2c0c4a6bf61d5935/justwidget.js" async></script>
             </div>
         </div>
@@ -85,7 +90,7 @@
             <p>Здесь размещен второй чат-виджет.</p>
 
             <!-- Второй виджет -->
-            <div class="chat-widget">
+            <div class="chat-widget hidden" id="widget2">
                 <script type="text/javascript">
                     !function(e,n){"use strict";function a(e,t){const n=setInterval(function(){ThreadsWidget&&!ThreadsWidget.isDummy&&(clearInterval(n),ThreadsWidget[e]&&ThreadsWidget[e].apply(void 0,t))},100)}window.ThreadsWidget={},e=e||"/settings.json",ThreadsWidget.isDummy=!0,["hideInvite","version","commitHash","showChat","hideChat","onHideChat","onScenarios","onLoad","on","reInit"].forEach(t=>{ThreadsWidget[t]=(...e)=>{a(t,e)}});i=new XMLHttpRequest;var i,t=function(e,t,n,a){i.onreadystatechange=function(){if(4===i.readyState)if(200===this.status)n(i.response);else{if("function"!=typeof a)throw new Error(i.response);a(i)}},i.open(e,t),i.send()};function o(t){t.webchat&&(t.webchat.filename=t.filename),n&&"string"==typeof n&&(t.webchat.currentLocale=n),n&&"object"==typeof n&&(n.locale&&"string"==typeof n.locale&&(t.webchat.currentLocale=n.locale),n.unavailable&&"boolean"==typeof n.unavailable&&(t.webchat.isUnavailableOnStart=n.unavailable));try{sessionStorage.setItem("__threadsWidget",JSON.stringify(t.webchat))}catch(e){window.__threadsWidget=JSON.stringify(t.webchat)}var e;t.filename?((e=document.createElement("script")).type="text/javascript",e.async=!0,e.src=t.filename,(t=document.getElementsByTagName("script")[0])?t.parentNode.insertBefore(e,t):document.body.appendChild(e)):console.error("Invalid bundle")}function s(){t("GET",e+"?rnd="+Math.random(),function(e){e=JSON.parse(e);o(e)})}"complete"===document.readyState?s():window.addEventListener("DOMContentLoaded",s,!1)}("https://nosov.edna.io/api/channels/web/86/settings",{});
                 </script>
@@ -99,7 +104,7 @@
         <button onclick="changePage(1)">Страница 2</button>
     </div>
 
-    <!-- JavaScript для управления слайдером -->
+    <!-- JavaScript для управления слайдером и виджетами -->
     <script>
         const slider = document.getElementById('slider');
         let currentPage = 0;
@@ -109,6 +114,18 @@
             currentPage = pageIndex;
             const offset = -pageIndex * 100; // Сдвиг в процентах
             slider.style.transform = `translateX(${offset}%)`;
+
+            // Управление видимостью виджетов
+            const widget1 = document.getElementById('widget1');
+            const widget2 = document.getElementById('widget2');
+
+            if (pageIndex === 0) {
+                widget1.classList.remove('hidden');
+                widget2.classList.add('hidden');
+            } else {
+                widget1.classList.add('hidden');
+                widget2.classList.remove('hidden');
+            }
         }
     </script>
 </body>
